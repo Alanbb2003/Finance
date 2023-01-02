@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Finance</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Login to see</string>
+    <string name="nav_header_subtitle">Login to see</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string-array name="type">
+        <item>Food</item>
+        <item>Drinks</item>
+        <item>Transport</item>
+        <item>Shopping</item>
+        <item>Entertainment</item>
+        <item>Housing</item>
+        <item>Electronics</item>
+        <item>Medical</item>
+        <item>Misc</item>
+        <item>Income</item>
+    </string-array>
+
+    <string-array name="tipetransaksi">
+        <item>Cash</item>
+        <item>Credit Card</item>
+    </string-array>
+</resources>
