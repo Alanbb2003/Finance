@@ -26,8 +26,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         db = AppDatabase.build(this)
 
-        
-
         binding.btnreg.setOnClickListener(){
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
