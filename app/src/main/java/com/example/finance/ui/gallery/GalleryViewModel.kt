@@ -5,9 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class GalleryViewModel : ViewModel() {
+    private var realtimedata = MutableLiveData<String>()
+    private var _user ="none"
+    val user: String
+        get() = _user
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Fragment"
+    fun update(data: String){
+        realtimedata.value = data
     }
-    val text: LiveData<String> = _text
+    fun loadData():LiveData<String>{
+        return realtimedata
+    }
+
+    val text: LiveData<String> = loadData()
 }

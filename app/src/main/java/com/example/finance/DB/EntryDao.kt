@@ -1,9 +1,6 @@
 package com.example.finance.DB
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface EntryDao {
@@ -15,4 +12,16 @@ interface EntryDao {
 
     @Delete
     suspend fun delete(Entry:EntryEntity)
+
+    @Query("SELECT * FROM Entry")
+    suspend fun getall():List<EntryEntity>
+
+    @Query("SELECT * FROM Entry where tipe = :tipe")
+    suspend fun getbytipe(tipe:String):List<EntryEntity>?
+
+    @Query("SELECT * FROM Entry where tipetransaksi = :tipe")
+    suspend fun getbytipetrans(tipe:String):List<EntryEntity>?
+
+    @Query("SELECT * FROM Entry where tipetransaksi = :tipetrans and tipe= :tipe")
+    suspend fun getbytipeandtrans(tipetrans:String,tipe:String):List<EntryEntity>?
 }
