@@ -13,15 +13,18 @@ interface EntryDao {
     @Delete
     suspend fun delete(Entry:EntryEntity)
 
-    @Query("SELECT * FROM Entry")
-    suspend fun getall():List<EntryEntity>
+    @Query("SELECT * FROM Entry where user=:user")
+    suspend fun getall(user:String):List<EntryEntity>
 
-    @Query("SELECT * FROM Entry where tipe = :tipe")
-    suspend fun getbytipe(tipe:String):List<EntryEntity>?
+    @Query("SELECT * FROM Entry where tipe = :tipe and user= :user")
+    suspend fun getbytipe(tipe:String,user: String):List<EntryEntity>?
 
-    @Query("SELECT * FROM Entry where tipetransaksi = :tipe")
-    suspend fun getbytipetrans(tipe:String):List<EntryEntity>?
+    @Query("SELECT * FROM Entry where tipetransaksi = :tipe and user =:user")
+    suspend fun getbytipetrans(tipe:String,user: String):List<EntryEntity>?
 
-    @Query("SELECT * FROM Entry where tipetransaksi = :tipetrans and tipe= :tipe")
-    suspend fun getbytipeandtrans(tipetrans:String,tipe:String):List<EntryEntity>?
+    @Query("SELECT * FROM Entry where tipetransaksi = :tipetrans and tipe= :tipe and user= :user")
+    suspend fun getbytipeandtrans(tipetrans:String,tipe:String,user: String):List<EntryEntity>?
+
+//    @Query("SELECT tipe,SUM(total) as total FROM Entry WHERE user= :user")
+//    suspend fun getTotal(user: String):List<EntryEntity>?
 }

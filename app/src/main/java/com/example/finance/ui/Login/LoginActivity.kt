@@ -1,5 +1,6 @@
 package com.example.finance.ui.Login
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,6 +46,10 @@ class LoginActivity : AppCompatActivity() {
 
                         }
                     }else{
+                        val sharedPreference =  getSharedPreferences("UserLogin", Context.MODE_PRIVATE)
+                        var editor = sharedPreference.edit()
+                        editor.putString("username",username)
+                        editor.commit()
                         val intent = Intent(this@LoginActivity,MainActivity::class.java)
                         intent.putExtra("user",user)
                         startActivity(intent)

@@ -1,5 +1,6 @@
 package com.example.finance.ui.gallery
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,11 +47,13 @@ class HistoryFragment(
         lvhistory = view.findViewById(R.id.rvHistory)
         btnsearch = view.findViewById(R.id.btnsearch)
 
-        val user = model.text.toString()
+//        val user = model.text.toString()
         //adapter
         adapter = RvHistoryAdapter(history,R.layout.history_layout,view.context)
         //fill the array
         refresh()
+        val sharedPreference = this.getActivity()?.getSharedPreferences("UserLogin", Context.MODE_PRIVATE)
+        val username = sharedPreference?.getString("username","defaultName")
         btnsearch.setOnClickListener() {
 //                Toast.makeText(view.context, user.toString(), Toast.LENGTH_LONG)
 //                    .show()
@@ -61,7 +64,7 @@ class HistoryFragment(
             history.clear()
             coroutine.launch {
                 if (tipe == "All" && tipetrans == "All"){
-                        val a = db.entryDao.getall()
+                        val a = db.entryDao.getall(username.toString())
                         if (a != null) {
                             for (i in 0..a.size - 1) {
                                 history.add(a[i])
@@ -69,7 +72,7 @@ class HistoryFragment(
                         }
                     }
                 else if (tipe !="All" && tipetrans == "All"){
-                        val a = db.entryDao.getbytipe(tipe)
+                        val a = db.entryDao.getbytipe(tipe,username.toString())
                         if (a != null) {
                             for (i in 0..a.size - 1) {
                                 history.add(a[i])
@@ -77,7 +80,7 @@ class HistoryFragment(
                         }
                     }
                 else if(tipe == "All" && tipetrans !="All"){
-                        val a = db.entryDao.getbytipetrans(tipetrans)
+                        val a = db.entryDao.getbytipetrans(tipetrans,username.toString())
                         if (a != null) {
                             for (i in 0..a.size - 1) {
                                 history.add(a[i])
@@ -85,7 +88,7 @@ class HistoryFragment(
                         }
                     }
                 else{
-                        val a = db.entryDao.getbytipeandtrans(tipetrans,tipe)
+                        val a = db.entryDao.getbytipeandtrans(tipetrans,tipe,username.toString())
                         if (a != null) {
                             for (i in 0..a.size - 1) {
                                 history.add(a[i])
@@ -102,9 +105,11 @@ class HistoryFragment(
         lvhistory.adapter = adapter
     }
     private fun refresh(){
+        val sharedPreference = this.getActivity()?.getSharedPreferences("UserLogin", Context.MODE_PRIVATE)
+        val username = sharedPreference?.getString("username","defaultName")
         history.clear()
         coroutine.launch {
-            val a = db.entryDao.getall()
+            val a = db.entryDao.getall(username.toString())
             if (a != null) {
                 for (i in 0..a.size - 1) {
                     history.add(a[i])

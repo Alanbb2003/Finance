@@ -10,6 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_history">History</string>
     <string name="menu_slideshow">Statistic</string>
+    <string name="menu_piechart">Pie Chart</string>
 
     <string-array name="type">
         <item>Food</item>
@@ -23,6 +24,7 @@
         <item>Misc</item>
         <item>Income</item>
     </string-array>
+
     <string-array name="typesearch">
         <item>All</item>
         <item>Food</item>
@@ -45,4 +47,6 @@
         <item>Cash</item>
         <item>Credit Card</item>
     </string-array>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -57,8 +57,10 @@
 
     <Button
         android:id="@+id/btnsearch"
-        android:layout_width="match_parent"
+        android:layout_width="366dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:text="Search" />
 
     <androidx.recyclerview.widget.RecyclerView
